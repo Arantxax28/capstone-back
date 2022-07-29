@@ -1,5 +1,6 @@
 package com.capstone.uzit.product;
 
+import org.hibernate.result.UpdateCountOutput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,8 @@ public class ProductService {
     }
 
     public void addNewProduct(Product product) {
-        System.out.println(product);
+        productRepository.save(product);
+
     }
 
     public void deleteProduct(Long productId) {
