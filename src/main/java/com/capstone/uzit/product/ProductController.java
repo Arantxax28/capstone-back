@@ -17,21 +17,24 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @CrossOrigin
     @GetMapping
     public List<Product> getProducts() {
         return productService.getProducts();
     }
 
+    @CrossOrigin
     @PostMapping
     public void registerNewProduct(@RequestBody Product product) {
         productService.addNewProduct(product);
     }
 
+    @CrossOrigin
     @DeleteMapping(path = "{productId}")
     public void deleteProduct(@PathVariable("productId") Long productId) {
         productService.deleteProduct(productId);
     }
-
+    @CrossOrigin
     @PutMapping(path = "{productId}")
     public void updateProduct(
             @PathVariable("productId") Long productId,
