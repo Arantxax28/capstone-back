@@ -26,8 +26,8 @@ public class Product {
     private LocalDate purchaseDate;
     private LocalDate expirationDate;
 
-    @Transient
-    private Integer daysLeft;
+//    @Transient
+//    private Integer daysLeft;
 
     public Product() {
     }
@@ -107,13 +107,13 @@ public class Product {
         this.expirationDate = expirationDate;
     }
 
-    public Integer getDaysLeft() {
-        return Period.between(LocalDate.now(),this.expirationDate).getDays();
-    }
-
-    public void setDaysLeft(Integer daysLeft) {
-        this.daysLeft = daysLeft;
-    }
+//    public Integer getDaysLeft() {
+//        return Period.between(LocalDate.now(),this.expirationDate).getDays();
+//    }
+//
+//    public void setDaysLeft(Integer daysLeft) {
+//        this.daysLeft = daysLeft;
+//    }
 
     @Override
     public String toString() {
