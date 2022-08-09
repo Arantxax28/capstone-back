@@ -1,5 +1,7 @@
 package com.capstone.uzit.product;
 
+import org.springframework.data.jpa.repository.Query;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
@@ -7,6 +9,7 @@ import java.util.Locale;
 
 @Entity
 @Table
+
 public class Product {
     @Id
     @SequenceGenerator(

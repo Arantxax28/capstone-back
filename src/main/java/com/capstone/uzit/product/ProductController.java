@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import org.springframework.data.domain.Example;
 
 @RestController
 @RequestMapping(path = "/products")
@@ -22,6 +23,21 @@ public class ProductController {
     public List<Product> getProducts() {
         return productService.getProducts();
     }
+
+    @CrossOrigin
+    @GetMapping(path = "/makeup")
+    public List<Product> getMakeup() {
+        return productService.getMakeup();
+    }
+    @GetMapping(path = "/skincare")
+    public List<Product> getSkincare() {
+        return productService.getSkincare();
+    }
+    @GetMapping(path = "/subscriptions")
+    public List<Product> getSubscriptions() {
+        return productService.getSubscriptions();
+    }
+
 
     @CrossOrigin
     @PostMapping
@@ -47,4 +63,5 @@ public class ProductController {
             ){
         productService.updateProduct(productId,name,brand,category,price,purchaseDate,expirationDate);
     }
+
 }
