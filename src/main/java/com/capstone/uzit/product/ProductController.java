@@ -29,10 +29,12 @@ public class ProductController {
     public List<Product> getMakeup() {
         return productService.getMakeup();
     }
+    @CrossOrigin
     @GetMapping(path = "/skincare")
     public List<Product> getSkincare() {
         return productService.getSkincare();
     }
+    @CrossOrigin
     @GetMapping(path = "/subscriptions")
     public List<Product> getSubscriptions() {
         return productService.getSubscriptions();
