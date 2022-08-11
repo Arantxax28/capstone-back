@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.time.Period;
 import java.util.Locale;
 
@@ -29,8 +30,8 @@ public class Product {
     private LocalDate purchaseDate;
     private LocalDate expirationDate;
 
-//    @Transient
-//    private Integer daysLeft;
+    @Transient
+    private Long daysLeft;
 
     public Product() {
     }
@@ -110,13 +111,24 @@ public class Product {
         this.expirationDate = expirationDate;
     }
 
-//    public Integer getDaysLeft() {
-//        return Period.between(LocalDate.now(),this.expirationDate).getDays();
+    public Long getDaysLeft()  {
+        System.out.println(this.expirationDate);
+        System.out.println(LocalDate.now());
+        System.out.println(ChronoUnit.DAYS.between(LocalDate.now(), this.expirationDate));
+        System.out.println("--------");
+        return (ChronoUnit.DAYS.between(LocalDate.now(), this.expirationDate));
+    }
+//    public Integer getDaysLeft()  {
+//        System.out.println(this.expirationDate);
+//        System.out.println(LocalDate.now());
+//        System.out.println(Period.between(LocalDate.now(), this.expirationDate));
+//        System.out.println("--------");
+//        return (Period.between(LocalDate.now(), this.expirationDate).getDays());
 //    }
-//
-//    public void setDaysLeft(Integer daysLeft) {
-//        this.daysLeft = daysLeft;
-//    }
+
+    public void setDaysLeft(Long daysLeft) {
+        this.daysLeft = daysLeft;
+    }
 
     @Override
     public String toString() {
@@ -128,6 +140,7 @@ public class Product {
                 ", price=" + price +
                 ", purchaseDate=" + purchaseDate +
                 ", expirationDate=" + expirationDate +
+                ", daysLeft=" + daysLeft +
                 '}';
     }
 }
