@@ -66,4 +66,13 @@ public class ProductController {
         productService.updateProduct(productId,name,brand,category,price,purchaseDate,expirationDate);
     }
 
+    @CrossOrigin
+    @PatchMapping(path = "{productId}")
+    public void updateUse(
+            @PathVariable("productId") Long productId,
+            @RequestParam(required = false) Integer useCount
+    ){
+        productService.updateUse(productId, useCount);
+    }
+
 }

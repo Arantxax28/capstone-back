@@ -29,6 +29,7 @@ public class Product {
     private Double price;
     private LocalDate purchaseDate;
     private LocalDate expirationDate;
+    private Integer useCount;
 
     @Transient
     private Long daysLeft;
@@ -36,7 +37,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String name, String brand, String category, Double price, LocalDate purchaseDate, LocalDate expirationDate) {
+    public Product(Long id, String name, String brand, String category, Double price, LocalDate purchaseDate, LocalDate expirationDate, Integer useCount) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -44,15 +45,17 @@ public class Product {
         this.price = price;
         this.purchaseDate = purchaseDate;
         this.expirationDate = expirationDate;
+        this.useCount = useCount;
     }
 
-    public Product(String name, String brand, String category, Double price, LocalDate purchaseDate, LocalDate expirationDate) {
+    public Product(String name, String brand, String category, Double price, LocalDate purchaseDate, LocalDate expirationDate, Integer useCount) {
         this.name = name;
         this.brand = brand;
         this.category = category;
         this.price = price;
         this.purchaseDate = purchaseDate;
         this.expirationDate = expirationDate;
+        this.useCount = useCount;
     }
 
     public Long getId() {
@@ -118,16 +121,17 @@ public class Product {
         System.out.println("--------");
         return (ChronoUnit.DAYS.between(LocalDate.now(), this.expirationDate));
     }
-//    public Integer getDaysLeft()  {
-//        System.out.println(this.expirationDate);
-//        System.out.println(LocalDate.now());
-//        System.out.println(Period.between(LocalDate.now(), this.expirationDate));
-//        System.out.println("--------");
-//        return (Period.between(LocalDate.now(), this.expirationDate).getDays());
-//    }
 
     public void setDaysLeft(Long daysLeft) {
         this.daysLeft = daysLeft;
+    }
+
+    public Integer getUseCount() {
+        return useCount;
+    }
+
+    public void setUseCount(Integer useCount) {
+        this.useCount = useCount;
     }
 
     @Override
@@ -141,6 +145,7 @@ public class Product {
                 ", purchaseDate=" + purchaseDate +
                 ", expirationDate=" + expirationDate +
                 ", daysLeft=" + daysLeft +
+                ",useCount=" + useCount +
                 '}';
     }
 }
