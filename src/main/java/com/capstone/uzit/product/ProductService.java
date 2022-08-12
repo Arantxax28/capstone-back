@@ -77,17 +77,31 @@ public class ProductService {
     }
 
 
+//    @Transactional
+//    public void updateUse(Long productId, Integer useCount) {
+//        Product product = productRepository.findById(productId)
+//                .orElseThrow(() -> new IllegalStateException(
+//                        "product with id " + productId +" does not exist"
+//                ));
+//
+//        int myNewCount = product.getUseCount();
+//        myNewCount++;
+//        product.setUseCount(myNewCount);
+//    }
+
     @Transactional
-    public void updateUse(Long productId, Integer useCount) {
+    public void updateCPU(Long productId, Integer useCount, Double costPerUse, Double price) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new IllegalStateException(
                         "product with id " + productId +" does not exist"
                 ));
-
         int myNewCount = product.getUseCount();
         myNewCount++;
         product.setUseCount(myNewCount);
 
+        double myNewCost = product.getPrice();
+        myNewCost= product.getPrice()/product.getUseCount();
+        product.setCostPerUse(myNewCost);
     }
 
 }

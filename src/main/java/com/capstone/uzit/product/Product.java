@@ -31,13 +31,15 @@ public class Product {
     private LocalDate expirationDate;
     private Integer useCount=0;
 
+    private Double costPerUse=price;
+
     @Transient
     private Long daysLeft;
 
     public Product() {
     }
 
-    public Product(Long id, String name, String brand, String category, Double price, LocalDate purchaseDate, LocalDate expirationDate, Integer useCount) {
+    public Product(Long id, String name, String brand, String category, Double price, LocalDate purchaseDate, LocalDate expirationDate, Integer useCount, Double costPerUse) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -46,9 +48,10 @@ public class Product {
         this.purchaseDate = purchaseDate;
         this.expirationDate = expirationDate;
         this.useCount = useCount;
+        this.costPerUse=costPerUse;
     }
 
-    public Product(String name, String brand, String category, Double price, LocalDate purchaseDate, LocalDate expirationDate, Integer useCount) {
+    public Product(String name, String brand, String category, Double price, LocalDate purchaseDate, LocalDate expirationDate, Integer useCount, Double costPerUse) {
         this.name = name;
         this.brand = brand;
         this.category = category;
@@ -56,6 +59,7 @@ public class Product {
         this.purchaseDate = purchaseDate;
         this.expirationDate = expirationDate;
         this.useCount = useCount;
+        this.costPerUse=costPerUse;
     }
 
     public Long getId() {
@@ -132,6 +136,14 @@ public class Product {
 
     public void setUseCount(Integer useCount) {
         this.useCount = useCount;
+    }
+
+    public Double getCostPerUse() {
+        return costPerUse;
+    }
+
+    public void setCostPerUse(Double costPerUse) {
+        this.costPerUse = costPerUse;
     }
 
     @Override
