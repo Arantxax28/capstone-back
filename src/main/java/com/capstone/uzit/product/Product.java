@@ -29,7 +29,7 @@ public class Product {
     private Double price;
     private LocalDate purchaseDate;
     private LocalDate expirationDate;
-    private Integer useCount;
+    private Integer useCount=0;
 
     @Transient
     private Long daysLeft;

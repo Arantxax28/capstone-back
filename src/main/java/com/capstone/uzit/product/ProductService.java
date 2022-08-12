@@ -76,18 +76,18 @@ public class ProductService {
 
     }
 
+
     @Transactional
     public void updateUse(Long productId, Integer useCount) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new IllegalStateException(
                         "product with id " + productId +" does not exist"
                 ));
-        if (useCount == null){
-            product.setUseCount(1);
-        }
-        if(useCount != null){
-            product.setUseCount(useCount);
-        }
+
+        int myNewCount = product.getUseCount();
+        myNewCount++;
+        product.setUseCount(myNewCount);
+
     }
 
 }
