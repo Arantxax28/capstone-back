@@ -90,13 +90,28 @@ public class ProductService {
 //    }
 
     @Transactional
-    public void updateCPU(Long productId, Integer useCount, Double costPerUse, Double price) {
+    public void addCPU(Long productId, Integer useCount, Double costPerUse, Double price) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new IllegalStateException(
                         "product with id " + productId +" does not exist"
                 ));
         int myNewCount = product.getUseCount();
         myNewCount++;
+        product.setUseCount(myNewCount);
+
+        double myNewCost = product.getPrice();
+        myNewCost= product.getPrice()/product.getUseCount();
+        product.setCostPerUse(myNewCost);
+    }
+
+    @Transactional
+    public void removeCPU(Long productId, Integer useCount, Double costPerUse, Double price) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new IllegalStateException(
+                        "product with id " + productId +" does not exist"
+                ));
+        int myNewCount = product.getUseCount();
+        myNewCount--;
         product.setUseCount(myNewCount);
 
         double myNewCost = product.getPrice();

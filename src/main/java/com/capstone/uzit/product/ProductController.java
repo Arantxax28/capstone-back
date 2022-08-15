@@ -76,14 +76,24 @@ public class ProductController {
 //    }
 
     @CrossOrigin
-    @PatchMapping(path = "{productId}")
-    public void updateCPU(
+    @PatchMapping(path = "/increment/{productId}")
+    public void addCPU(
             @PathVariable("productId") Long productId,
             @RequestParam(required = false) Integer useCount,
             @RequestParam(required = false) Double costPerUse,
             @RequestParam(required = false) Double price
     ){
-        productService.updateCPU(productId, useCount, costPerUse, price);
+        productService.addCPU(productId, useCount, costPerUse, price);
     }
 
+    @CrossOrigin
+    @PatchMapping(path = "/decrement/{productId}")
+    public void removeCPU(
+            @PathVariable("productId") Long productId,
+            @RequestParam(required = false) Integer useCount,
+            @RequestParam(required = false) Double costPerUse,
+            @RequestParam(required = false) Double price
+    ){
+        productService.removeCPU(productId, useCount, costPerUse, price);
+    }
 }
